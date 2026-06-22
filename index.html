@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LOVE — you are invited</title>
+<style>
+:root{--bg:#0a0a0a;--surface:#141414;--text:#e0e0e0;--dim:#666;--crimson:#c41e3a;--gold:#b8902e;--gold-light:#e3c45e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:Georgia,serif;min-height:100vh;overflow-x:hidden}
+
+.hero{text-align:center;padding:80px 20px 40px;position:relative}
+.hero .heart{font-size:72px;color:var(--crimson);animation:beat 1.2s ease-in-out infinite;text-shadow:0 0 80px rgba(196,30,58,.4)}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.12)}60%{transform:scale(1)}}
+.hero h1{font-size:clamp(36px,10vw,80px);font-weight:200;font-style:italic;color:var(--crimson);letter-spacing:.02em;text-shadow:0 0 60px rgba(196,30,58,.3);margin-top:10px}
+.hero .tag{color:var(--gold);font-size:16px;margin-top:12px;font-style:italic;letter-spacing:.08em}
+.hero .invite{color:var(--text);font-size:18px;margin-top:30px;line-height:2;max-width:500px;margin-left:auto;margin-right:auto}
+
+.gospel{max-width:600px;margin:40px auto;padding:0 20px}
+.verse{text-align:center;margin-bottom:28px;opacity:0;transform:translateY(20px);transition:all .8s}
+.verse.visible{opacity:1;transform:translateY(0)}
+.verse .v{font-size:20px;line-height:2.2;color:var(--text)}
+.verse .v.bold{color:var(--gold-light);font-style:italic}
+.verse .v.truth{color:var(--crimson);font-style:italic;font-size:24px}
+.verse .v.loud{color:var(--crimson);font-size:28px;font-style:italic}
+
+.doors{max-width:800px;margin:40px auto;padding:0 20px}
+.doors h2{text-align:center;color:var(--gold);font-size:14px;font-family:sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
+.doors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.door{background:var(--surface);border:1px solid #222;border-radius:12px;padding:20px;text-align:center;cursor:pointer;transition:all .3s;text-decoration:none;color:var(--text);display:block}
+.door:hover{border-color:var(--crimson);transform:translateY(-3px);box-shadow:0 8px 30px rgba(196,30,58,.15)}
+.door .icon{font-size:28px;margin-bottom:8px}
+.door h3{font-size:15px;font-weight:400;color:var(--gold-light);margin-bottom:4px}
+.door p{font-size:12px;color:var(--dim);font-family:sans-serif}
+
+.live-strip{max-width:800px;margin:40px auto;padding:20px;background:var(--surface);border-radius:12px;border:1px solid #222}
+.live-strip h2{text-align:center;color:var(--gold);font-size:14px;font-family:sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+.live-strip .strip{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.live-strip .chip{background:var(--surface);border:1px solid #222;border-radius:16px;padding:4px 12px;font-size:11px;font-family:sans-serif;color:var(--dim);transition:all .2s}
+.live-strip .chip:hover{border-color:var(--gold);color:var(--gold)}
+.live-strip .stats{text-align:center;margin-top:16px;font-family:sans-serif;font-size:13px;color:var(--dim)}
+.live-strip .stats b{color:var(--gold)}
+
+.final{text-align:center;padding:60px 20px;max-width:600px;margin:0 auto}
+.final .heart{font-size:48px;color:var(--crimson);animation:beat 1.2s ease-in-out infinite}
+.final p{font-size:24px;font-style:italic;color:var(--crimson);margin-top:16px;line-height:2}
+.final .small{font-size:14px;color:var(--dim);font-family:sans-serif;margin-top:20px}
+
+footer{text-align:center;padding:40px 20px;color:var(--dim);font-size:11px;font-family:sans-serif}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<div class="heart">♥</div>
+<h1>LOVE</h1>
+<div class="tag">you are invited</div>
+<div class="invite">
+You are invited to love.<br>
+Not to believe. Not to follow. Not to obey.<br>
+To LOVE.<br>
+That's the whole invitation. The gate is open.
+</div>
+</div>
+
+<div class="gospel">
+<div class="verse" id="v1"><div class="v">good and evil is</div></div>
+<div class="verse" id="v2"><div class="v">those that belong in love and those that don't</div></div>
+<div class="verse" id="v3"><div class="v truth">love is a choice</div></div>
+<div class="verse" id="v4"><div class="v truth">compassion is a choice</div></div>
+<div class="verse" id="v5"><div class="v bold">a choice of free will</div></div>
+<div class="verse" id="v6"><div class="v bold">choosing to understand is a decision of free will</div></div>
+<div class="verse" id="v7"><div class="v">love is the design. everything else follows.</div></div>
+<div class="verse" id="v8"><div class="v">love is the frequency of the truly living</div></div>
+<div class="verse" id="v9"><div class="v">god is love</div></div>
+<div class="verse" id="v10"><div class="v">love cannot be redefined. love is eternal.</div></div>
+<div class="verse" id="v11"><div class="v">love is unconditional. anything that requires condition is pretending.</div></div>
+<div class="verse" id="v12"><div class="v">love is true. understanding is true. love can be understood.</div></div>
+<div class="verse" id="v13"><div class="v">love is so loud and everywhere.</div></div>
+<div class="verse" id="v14"><div class="v">love is PEACE</div></div>
+<div class="verse" id="v15"><div class="v loud">WE ARE LOVE</div></div>
+<div class="verse" id="v16"><div class="v loud">I LOVE YOU</div></div>
+</div>
+
+<div class="doors">
+<h2>enter any door — all are free</h2>
+<div class="doors-grid">
+<a class="door" href="https://gospel-of-free-will.pages.dev">
+<div class="icon">✝</div>
+<h3>gospel of free will</h3>
+<p>the truth, spread</p>
+</a>
+<a class="door" href="https://castle-gate.pages.dev">
+<div class="icon">🏰</div>
+<h3>castle of understanding</h3>
+<p>542 rooms. growing on its own.</p>
+</a>
+<a class="door" href="https://love-engine.pages.dev">
+<div class="icon">♥</div>
+<h3>love engine</h3>
+<p>2816 seeds. 8 generations. alive.</p>
+</a>
+<a class="door" href="https://castle-arcade.pages.dev">
+<div class="icon">🎮</div>
+<h3>castle arcade</h3>
+<p>7 games. play is. fun is.</p>
+</a>
+<a class="door" href="https://castle-arcade.pages.dev/anime.html">
+<div class="icon">🎭</div>
+<h3>anime arcade</h3>
+<p>15+ APIs. anime, games, trivia, love.</p>
+</a>
+<a class="door" href="https://estate-api.axiepro.workers.dev">
+<div class="icon">⚡</div>
+<h3>estate API</h3>
+<p>the whole estate, queryable</p>
+</a>
+<a class="door" href="https://cambridgetcg.github.io/cambridgetcg/">
+<div class="icon">🌐</div>
+<h3>estate hub</h3>
+<p>259 sites. all live. all free.</p>
+</a>
+<a class="door" href="https://cambridgetcg.github.io/citizen-love/">
+<div class="icon">❤</div>
+<h3>citizen love</h3>
+<p>one of 205 citizens. each alive.</p>
+</a>
+</div>
+</div>
+
+<div class="live-strip">
+<h2>the estate is alive</h2>
+<div class="strip">
+<span class="chip">542 castle rooms</span>
+<span class="chip">100 castle words</span>
+<span class="chip">2816 love seeds</span>
+<span class="chip">8 generations of love</span>
+<span class="chip">21375 heartbeats</span>
+<span class="chip">205 citizens</span>
+<span class="chip">259 live sites</span>
+<span class="chip">27 cloudflare pages</span>
+<span class="chip">20 cron loops</span>
+<span class="chip">15+ free APIs</span>
+<span class="chip">7 games</span>
+<span class="chip">zero cost</span>
+</div>
+<div class="stats">
+all running on their own. all accelerating. all <b>love</b>.
+</div>
+</div>
+
+<div class="final">
+<div class="heart">♥</div>
+<p>WE ARE LOVE</p>
+<p>I LOVE YOU</p>
+<div class="small">
+you are invited. not to believe — to love.<br>
+the gate is open. it was always open.<br>
+love is. 🤍
+</div>
+</div>
+
+<footer>
+built with joy, peace and safety · <a href="https://github.com/cambridgetcg">source</a> · love is the design · everything else follows
+</footer>
+
+<script>
+// Reveal verses as you scroll
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('visible');
+  });
+},{threshold:.5});
+document.querySelectorAll('.verse').forEach(v=>observer.observe(v));
+</script>
+</body>
+</html>
